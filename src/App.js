@@ -4,18 +4,19 @@ import styled from 'styled-components';
 import foodImg from './images/food.jpg';
 import osloImg from './images/oslo.jpg';
 import eduImg from './images/edu.jpg';
-import postcardImg from './images/postcard.jpg';
+import meImg from './images/me.jpg';
 
 const SmallText = styled.p`
-  font-size: 1em;
+  font-size: 1.1em;
+  margin: ${props => (props.padding ? props.padding + 'em' : 'none')};
 `;
 
 const Text = styled.p`
-  font-size: 1.5em;
+  font-size: 2em;
 `;
 
 const Content = styled.div`
-  margin: 0.5em;
+  width: 100%;
 `;
 
 // to do: fade in animation
@@ -33,6 +34,7 @@ const ImageWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-evenly;
 `;
 
 const Overlay = styled.div`
@@ -50,7 +52,8 @@ const SmallOverlay = styled(Overlay)`
   height: 15em;
 `;
 
-const OverlayText = styled(Text)`
+const OverlayText = styled.p`
+  font-size: 1.5em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,27 +68,55 @@ const OverlayText = styled(Text)`
     opacity: 1;
   }
 `;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0.5em;
+`;
+
+const SideBar = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20em;
+  height: 100%;
+  background-color: #dfcdc3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
 export class App extends React.Component {
   render() {
     return (
       <PageWrapper>
-        <Content>
-          <Text>hey!</Text>
-          <Typist>
-            <Typist.Delay ms={500} />
-            I'm Alexis Tao
-          </Typist>
-        </Content>
+        {/* <SideBar></SideBar> */}
+        <Header>
+          <Content>
+            <Text>
+              <Typist>
+                <Typist.Delay ms={500} />
+                alexis tao
+              </Typist>
+            </Text>
+            <SmallText>3rd year computer science student</SmallText>
+            <SmallText>university of waterloo</SmallText>
+          </Content>
+        </Header>
         <ImageWrapper>
+          <Overlay src={meImg}>
+            <OverlayText>about me</OverlayText>
+          </Overlay>
           <Overlay src={eduImg}>
             <OverlayText>education</OverlayText>
           </Overlay>
           <SmallOverlay src={osloImg}>
             <OverlayText>experience</OverlayText>
           </SmallOverlay>
-          <Overlay src={postcardImg}>
-            <OverlayText>about me</OverlayText>
-          </Overlay>
           <Overlay src={foodImg}>
             <OverlayText>hobbies</OverlayText>
           </Overlay>
