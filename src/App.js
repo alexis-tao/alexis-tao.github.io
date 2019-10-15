@@ -52,7 +52,7 @@ const Icons = styled.div`
 `;
 
 const Page = styled.div`
-  max-height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

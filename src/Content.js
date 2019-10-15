@@ -20,7 +20,7 @@ const TextWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 70%;
@@ -35,7 +35,7 @@ const ImageWrapper = styled.div`
   justify-content: center;
 `;
 
-const Overlay = styled.div`
+const Overlay = styled.a`
   background-image: url(${props => props.src});
   background-repeat: no-repeat;
   background-size: contain;
@@ -43,6 +43,13 @@ const Overlay = styled.div`
   height: 22em;
   margin: 0.5em;
   cursor: pointer;
+  text-decoration: none;
+  color: #262626;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: #262626;
+  }
 `;
 
 const OverlayText = styled.p`
@@ -57,55 +64,43 @@ const OverlayText = styled.p`
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
   margin: 0;
+
   ${Overlay}:hover & {
     opacity: 1;
   }
 `;
 
-export class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mode: 'default'
-    };
-  }
+const Section = styled.div``;
 
-  onClickMode = mode => {
-    this.setState({
-      mode
-    });
-  };
-
-  render() {
-    const { mode } = this.state;
-
-    switch (mode) {
-      // home screen with all options shown
-      default:
-        return (
-          <Wrapper>
-            <ImageWrapper>
-              <Overlay src={meImg} onClick={() => this.onClickMode('me')}>
-                <OverlayText>about me</OverlayText>
-              </Overlay>
-              <Overlay src={eduImg} onClick={() => this.onClickMode('edu')}>
-                <OverlayText>education</OverlayText>
-              </Overlay>
-              <Overlay
-                src={osloImg}
-                onClick={() => this.onClickMode('experience')}
-              >
-                <OverlayText>experience</OverlayText>
-              </Overlay>
-              <Overlay
-                src={foodImg}
-                onClick={() => this.onClickMode('smthing')}
-              >
-                <OverlayText>hobbies</OverlayText>
-              </Overlay>
-            </ImageWrapper>
-          </Wrapper>
-        );
-    }
-  }
-}
+export const Content = () => {
+  return (
+    <Wrapper>
+      <ImageWrapper>
+        <Overlay src={meImg} href="#about-me">
+          <OverlayText>about me</OverlayText>
+        </Overlay>
+        <Overlay src={osloImg} href="#experience">
+          <OverlayText>experience</OverlayText>
+        </Overlay>
+        <Overlay src={eduImg} href="#education">
+          <OverlayText>projects</OverlayText>
+        </Overlay>
+        <Overlay src={foodImg} href="#projects">
+          <OverlayText>hobbies</OverlayText>
+        </Overlay>
+      </ImageWrapper>
+      <Section id="about-me">
+        <Text>about me</Text>
+      </Section>
+      <Section id="experience">
+        <Text>experience</Text>
+      </Section>
+      <Section id="projects">
+        <Text>projects</Text>
+      </Section>
+      <Section id="hobbies">
+        <Text>hobbies</Text>
+      </Section>
+    </Wrapper>
+  );
+};
