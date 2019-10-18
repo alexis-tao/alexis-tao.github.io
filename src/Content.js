@@ -4,6 +4,7 @@ import foodImg from './images/food.jpg';
 import osloImg from './images/oslo.jpg';
 import eduImg from './images/edu.jpg';
 import meImg from './images/me.jpg';
+import Modal from 'react-modal';
 
 const SmallText = styled.p`
   font-size: 1.1em;
@@ -72,35 +73,101 @@ const OverlayText = styled.p`
 
 const Section = styled.div``;
 
-export const Content = () => {
-  return (
-    <Wrapper>
-      <ImageWrapper>
-        <Overlay src={meImg} href="#about-me">
-          <OverlayText>about me</OverlayText>
-        </Overlay>
-        <Overlay src={osloImg} href="#experience">
-          <OverlayText>experience</OverlayText>
-        </Overlay>
-        <Overlay src={eduImg} href="#education">
-          <OverlayText>projects</OverlayText>
-        </Overlay>
-        <Overlay src={foodImg} href="#projects">
-          <OverlayText>hobbies</OverlayText>
-        </Overlay>
-      </ImageWrapper>
-      <Section id="about-me">
-        <Text>about me</Text>
-      </Section>
-      <Section id="experience">
-        <Text>experience</Text>
-      </Section>
-      <Section id="projects">
-        <Text>projects</Text>
-      </Section>
-      <Section id="hobbies">
-        <Text>hobbies</Text>
-      </Section>
-    </Wrapper>
-  );
-};
+export class Content extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowExperience: false,
+      isShowEducation: false,
+      isShowProjects: false,
+      isShowAboutMe: false
+    };
+  }
+
+  toggleModal = type => {
+    switch (type) {
+      case 'experience':
+        this.setState({
+          isShowExperience: !this.state.isShowExperience
+        });
+        break;
+      case 'education':
+        this.setState({
+          isShowEducation: !this.state.isShowEducation
+        });
+        break;
+      case 'projects':
+        this.setState({
+          isShowProjects: !this.state.isShowProjects
+        });
+        break;
+      default:
+        this.setState({
+          isShowAboutMe: !this.state.isShowAboutMe
+        });
+        break;
+    }
+  };
+
+  render() {
+    const {
+      isShowAboutMe,
+      isShowEducation,
+      isShowExperience,
+      isShowProjects
+    } = this.state;
+    return (
+      <Wrapper>
+        <ImageWrapper>
+          <Overlay
+            src={meImg}
+            href="#about-me"
+            onClick={() => this.toggleModal('aboutMe')}
+          >
+            <OverlayText>about me</OverlayText>
+          </Overlay>
+          <Overlay
+            src={osloImg}
+            href="#experience"
+            onClick={() => this.toggleModal('experience')}
+          >
+            <OverlayText>experience</OverlayText>
+          </Overlay>
+          <Overlay
+            src={eduImg}
+            href="#education"
+            onClick={() => this.toggleModal('education')}
+          >
+            <OverlayText>projects</OverlayText>
+          </Overlay>
+          <Overlay
+            src={foodImg}
+            href="#projects"
+            onClick={() => this.toggleModal('projects')}
+          >
+            <OverlayText>projects</OverlayText>
+          </Overlay>
+        </ImageWrapper>
+        <Modal
+          isOpen={isShowAboutMe}
+          onRequestClose={() => this.toggleModal('aboutMe')}
+        >
+          <Text>about me</Text>
+        </Modal>
+        {/* <Section id="about-me">
+          <Text>about me</Text>
+          <SmallText>Hey! </SmallText>
+        </Section>
+        <Section id="experience">
+          <Text>experience</Text>
+        </Section>
+        <Section id="projects">
+          <Text>projects</Text>
+        </Section>
+        <Section id="hobbies">
+          <Text>hobbies</Text>
+        </Section> */}
+      </Wrapper>
+    );
+  }
+}
