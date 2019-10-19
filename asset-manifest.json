@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/website/static/css/main.b560cd81.chunk.css",
+    "main.js": "/website/static/js/main.f8e1f1ec.chunk.js",
+    "main.js.map": "/website/static/js/main.f8e1f1ec.chunk.js.map",
+    "runtime-main.js": "/website/static/js/runtime-main.96276436.js",
+    "runtime-main.js.map": "/website/static/js/runtime-main.96276436.js.map",
+    "static/js/2.029a88ac.chunk.js": "/website/static/js/2.029a88ac.chunk.js",
+    "static/js/2.029a88ac.chunk.js.map": "/website/static/js/2.029a88ac.chunk.js.map",
+    "index.html": "/website/index.html",
+    "precache-manifest.c4eb144fd473889ee2a1092870ddc58b.js": "/website/precache-manifest.c4eb144fd473889ee2a1092870ddc58b.js",
+    "service-worker.js": "/website/service-worker.js",
+    "static/css/main.b560cd81.chunk.css.map": "/website/static/css/main.b560cd81.chunk.css.map",
+    "static/media/edu.jpg": "/website/static/media/edu.ad987e23.jpg",
+    "static/media/food.jpg": "/website/static/media/food.0ded257d.jpg",
+    "static/media/journal.jpg": "/website/static/media/journal.e60e2716.jpg",
+    "static/media/me.jpg": "/website/static/media/me.540dd2e6.jpg",
+    "static/media/oslo.jpg": "/website/static/media/oslo.13f3c981.jpg",
+    "static/media/postcard.jpg": "/website/static/media/postcard.f05ecd9a.jpg",
+    "static/media/work.jpg": "/website/static/media/work.4ea4898e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.96276436.js",
+    "static/js/2.029a88ac.chunk.js",
+    "static/css/main.b560cd81.chunk.css",
+    "static/js/main.f8e1f1ec.chunk.js"
+  ]
+}
