@@ -11,8 +11,9 @@ const SmallText = styled.p`
   margin: ${props => (props.padding ? props.padding + 'em' : 'none')};
 `;
 
-const Text = styled.p`
-  font-size: 2em;
+const BlackText = styled.div`
+  color: #262626;
+  font-size: 18px;
 `;
 
 const TextWrapper = styled.div`
@@ -21,10 +22,7 @@ const TextWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 70%;
+  width: 100%;
   padding: 2em;
 `;
 
@@ -51,6 +49,9 @@ const Overlay = styled.a`
     text-decoration: none;
     color: #262626;
   }
+  position: sticky;
+  top: 100px;
+  right: 200px;
 `;
 
 const OverlayText = styled.p`
@@ -73,100 +74,43 @@ const OverlayText = styled.p`
 
 const Section = styled.div``;
 
+const Box = styled.div`
+  width: 22em;
+  height: 22em;
+  background-color: #dfcdc3;
+  position: sticky;
+  top: 275px;
+  right: 450px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+const Line = styled.hr`
+  color: ${props => props.color};
+  background-color: ${props => props.color};
+  border: none;
+  height: ${props => props.height};
+  width: ${props => props.width};
+  margin: 0;
+`;
+
 export class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShowExperience: false,
-      isShowEducation: false,
-      isShowProjects: false,
-      isShowAboutMe: false
-    };
-  }
-
-  toggleModal = type => {
-    switch (type) {
-      case 'experience':
-        this.setState({
-          isShowExperience: !this.state.isShowExperience
-        });
-        break;
-      case 'education':
-        this.setState({
-          isShowEducation: !this.state.isShowEducation
-        });
-        break;
-      case 'projects':
-        this.setState({
-          isShowProjects: !this.state.isShowProjects
-        });
-        break;
-      default:
-        this.setState({
-          isShowAboutMe: !this.state.isShowAboutMe
-        });
-        break;
-    }
-  };
-
   render() {
-    const {
-      isShowAboutMe,
-      isShowEducation,
-      isShowExperience,
-      isShowProjects
-    } = this.state;
     return (
       <Wrapper>
-        <ImageWrapper>
-          <Overlay
-            src={meImg}
-            href="#about-me"
-            onClick={() => this.toggleModal('aboutMe')}
-          >
-            <OverlayText>about me</OverlayText>
-          </Overlay>
-          <Overlay
-            src={osloImg}
-            href="#experience"
-            onClick={() => this.toggleModal('experience')}
-          >
-            <OverlayText>experience</OverlayText>
-          </Overlay>
-          <Overlay
-            src={eduImg}
-            href="#education"
-            onClick={() => this.toggleModal('education')}
-          >
-            <OverlayText>projects</OverlayText>
-          </Overlay>
-          <Overlay
-            src={foodImg}
-            href="#projects"
-            onClick={() => this.toggleModal('projects')}
-          >
-            <OverlayText>projects</OverlayText>
-          </Overlay>
-        </ImageWrapper>
-        <Modal
-          isOpen={isShowAboutMe}
-          onRequestClose={() => this.toggleModal('aboutMe')}
-        >
-          <Text>about me</Text>
-        </Modal>
-        {/* <Section id="about-me">
-          <Text>about me</Text>
-          <SmallText>Hey! </SmallText>
-        </Section>
-        <Section id="experience">
-          <Text>experience</Text>
-        </Section>
-        <Section id="projects">
-          <Text>projects</Text>
-        </Section>
-        <Section id="hobbies">
-          <Text>hobbies</Text>
-        </Section> */}
+        <Overlay src={foodImg}>
+          <OverlayText>hmmmm</OverlayText>
+        </Overlay>
+        <Box>
+          <BlackText>3rd year computer science</BlackText>
+          <BlackText>university of waterloo</BlackText>
+          <Line color="#262626" height="1px" width="50px" />
+          <BlackText>github</BlackText>
+          <BlackText>linkedin</BlackText>
+          <BlackText>email</BlackText>
+        </Box>
       </Wrapper>
     );
   }
